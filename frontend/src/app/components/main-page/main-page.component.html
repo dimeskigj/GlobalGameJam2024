@@ -1,1 +1,25 @@
-<p>main-page works!</p>
+<div class="relative min-h-screen flex items-end justify-center">
+    <div class="p-10 min-w-full flex items-center justify-between">
+        <div>CHAR1</div>
+        <input [disabled]="hasSubmitted" type="text" placeholder="Enter your joke here.." [(ngModel)]="joke"
+            (keyup.enter)="onEnter()"
+            class="disabled:opacity-50 disabled:border-slate-200 min-w-[50%] bg-slate-200 bg-opacity-50 appearance-none border-2 border-slate-200 rounded h-13 py-3 px-4 text-slate-700 leading-tight focus:outline-none focus:bg-slate-100 focus:border-cyan-800">
+        <div>CHAR2</div>
+    </div>
+</div>
+
+<div class="absolute top-4 left-4 text-xl font-mono">ROOM ID: {{gameId}}</div>
+<div class="absolute top-10 left-4 font-mono">DEBUG: {{gameState | json}}</div>
+
+<!-- CENTERED STUFF -->
+<div class=" absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+    @if(gameState?.player2?.joined === false) {
+    <div class="animate-bounce text-3xl">Waiting for second player to join... </div>
+    }
+    @if((gameState?.winner ?? -1) !== -1) {
+    <div class="animate-bounce text-3xl">Player {{gameState?.winner}} won!</div>
+    }
+    @if(gameState?.winner === -1 && gameState?.player1?.joke && gameState?.player2?.joke) {
+    <div class="animate-ping text-3xl">Thinking...</div>
+    }
+</div>

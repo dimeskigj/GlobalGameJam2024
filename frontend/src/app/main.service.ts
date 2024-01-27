@@ -21,4 +21,11 @@ export class MainService {
   joinRoom(id: number): Observable<boolean> {
     return this.http.post<boolean>(`${API_URL}/join/${id}`, null);
   }
+
+  submitJoke(id: number, player: number, joke: string): Observable<void> {
+    return this.http.post<void>(`${API_URL}/game/${id}`, {
+      player: player,
+      text: joke
+    });
+  }
 }
