@@ -29,13 +29,16 @@ export class AppController {
     const reference = ref(this.db, `games/${id}`);
     let game = (await get(reference)).val();
 
-    if (!game.player2.joined) {
-      game.player2.joined = true;
-      set(reference, game);
-      return true;
+    try {
+      if (!game.player2.joined) {
+        game.player2.joined = true;
+        set(reference, game);
+        return true;
+      }
+      return false;
+    } catch (e) {
+      return false;
     }
-
-    return false;
   }
 
   @Post("game/:id")

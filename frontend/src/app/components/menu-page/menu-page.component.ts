@@ -13,13 +13,17 @@ import { Router } from '@angular/router';
 export class MenuPageComponent {
   roomCode?: number;
 
-  constructor(private readonly service: MainService, private readonly router: Router) {}
+  constructor(private readonly service: MainService, private readonly router: Router) { }
 
   newRoom(): void {
-    this.service.newRoom().subscribe(data => this.router.navigate([1, data.id]))
+    this.service.newRoom().subscribe(data => this.router.navigate([1, data.id]));
   }
 
   joinRoom(): void {
-
+    this.service.joinRoom(this.roomCode ?? -1).subscribe(data => {
+      if (data) {
+        this.router.navigate([2, this.roomCode])
+      }
+    });
   }
 }
