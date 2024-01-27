@@ -1,12 +1,15 @@
 <div class="min-h-screen flex flex-col justify-center items-center">
+    <div class="text-5xl font-mono text-green-50 mb-20 text-center">
+        player{{'@'}}game:~scripts/$ <span class="text-green-400">./make_me_laugh.sh</span>
+    </div>
     <button (click)="newRoom()"
-        class="bg-slate-500 hover:bg-slate-400 text-white text-2xl w-64 font-bold py-2 px-10 border-b-4 active:border-b-0 active:pt-3 border-slate-700 hover:border-slate-500 rounded">
+        class="font-mono bg-slate-500 hover:bg-slate-400 text-white text-2xl w-64 font-bold py-2 px-10 border-b-4 active:border-b-0 active:pt-3 border-slate-700 hover:border-slate-500 rounded">
         New Room</button>
     <hr class="h-px w-80 my-7 bg-slate-200 border-0 dark:bg-slate-300">
     <input type="text" placeholder="ROOM ID" [(ngModel)]="roomCode"
         class="text-center font-mono bg-slate-200 appearance-none border-2 border-slate-200 rounded w-64 h-13 py-3 px-4 text-slate-700 leading-tight focus:outline-none focus:bg-slate-100 focus:border-cyan-800">
     <button (click)="joinRoom()"
-        class="mt-3 bg-slate-500 hover:bg-slate-400 text-white text-2xl font-bold w-64 py-2 px-10 border-b-4 active:border-b-0 active:pt-3 border-slate-700 hover:border-slate-500 rounded">
+        class="font-mono mt-3 bg-slate-500 hover:bg-slate-400 text-white text-2xl font-bold w-64 py-2 px-10 border-b-4 active:border-b-0 active:pt-3 border-slate-700 hover:border-slate-500 rounded">
         Enter Room
     </button>
 </div>

@@ -2,7 +2,7 @@ import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import { Database, DatabaseReference, get, getDatabase, ref, set } from "firebase/database";
 
 const llamaUrl = 'http://localhost:11434/api/generate';
-const themes = ['Programming Jokes', 'Dad Jokes', 'Animal Jokes', 'Math Jokes', 'Anti Jokes',];
+const themes = ['Programming Joke', 'Dad Joke', 'Animal Joke', 'Math Joke', 'Anti Joke',];
 
 @Controller()
 export class AppController {
