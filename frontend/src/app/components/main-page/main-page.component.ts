@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { MainService } from '../../main.service';
 import { ActivatedRoute } from '@angular/router';
 import { of, switchMap } from 'rxjs';
+import { Database, object, ref } from '@angular/fire/database';
 
 interface GameStatus {
   player1: PlayerStatus;
@@ -23,6 +24,7 @@ interface PlayerStatus {
   styleUrl: './main-page.component.scss'
 })
 export class MainPageComponent implements OnInit {
+  private db: Database = inject(Database);
   gameState?: GameStatus;
   playerNumber = 1;
 
@@ -36,7 +38,11 @@ export class MainPageComponent implements OnInit {
         return of(gameId);
       })
     ).subscribe(
-      id => id
+      id => {
+        const item = ref(this.db, `games/${id}`);
+        const obj = object(item);
+        obj.subscribe(item => { this.gameState = item.snapshot.val(); console.log(this.gameState); });
+      }
     );
   }
 }

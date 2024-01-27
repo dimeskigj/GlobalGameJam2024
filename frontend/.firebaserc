@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "ggj24-5dbc8": {
+      "hosting": {
+        "frontend": [
+          "ggj24-5dbc8"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "ggj24-5dbc8"
+  }
+}
